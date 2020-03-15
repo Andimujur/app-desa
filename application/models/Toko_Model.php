@@ -49,11 +49,11 @@ class Toko_Model extends CI_Model
         return $this->db->get_where('barang', ['id' => $id])->row_array();
     }
 
-    public function cariData($keyword)
+    public function cariData($table, $keyword)
     {
-        $this->db->like('kode_barang', $keyword);
-        $this->db->or_like('nama_barang', $keyword);
-        $this->db->from('barang');
+        $this->db->like('nama', $keyword);
+        $this->db->or_like('nik', $keyword);
+        $this->db->from($table);
         return $this->db->get()->result_array();
     }
 
@@ -64,9 +64,26 @@ class Toko_Model extends CI_Model
         return $this->db->update($table);
     }
 
+    public function getUserSubMenu()
+    {
+        $this->db->select('*');
+        $this->db->from('user_menu');
+        $this->db->join('user_sub_menu', 'user_menu.menu_id=user_sub_menu.menu_id');
+
+        return $this->db->get()->result_array();
+    }
+
     public function getByUsername($username)
     {
         return $this->db->get_where('user', ['username' => $username])->row_array();
+    }
+
+    public function tambahLayanan($set)
+    {
+        $data = [
+            'layanan' => $set
+        ];
+        return $this->db->insert('layanan', $data);
     }
 }
 

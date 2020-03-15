@@ -7,7 +7,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <title><?= $title ?> </title>
-
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/') ?>plugins/toastr/toastr.min.css">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="<?= base_url('assets/vendor/') ?>plugins/fontawesome-free/css/all.min.css">
     <!-- overlayScrollbars -->

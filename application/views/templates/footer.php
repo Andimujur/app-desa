@@ -46,6 +46,23 @@
 <script src="<?= base_url('assets/vendor/') ?>plugins/toastr/toastr.min.js"></script>
 
 <script src="<?= base_url('assets/') ?>js/myscript.js"></script>
+
+<script type="text/javascript">
+    $(function() {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+        const flashData = $('.flashdata').data('flashdata');
+        console.log(flashData);
+        if (flashData) {
+            toastr.error(flashData)
+        }
+
+    });
+</script>
 </body>
 
 </html>

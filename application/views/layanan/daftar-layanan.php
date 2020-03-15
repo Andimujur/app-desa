@@ -1,11 +1,14 @@
 <section class="content">
+    <div class="flashdata" data-flashdata="<?= $this->session->flashdata('flash') ?>"></div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
+                <div class="col-sm-2 mb-2">
+                    <a href="" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">Tambah layanan</a>
+                </div>
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Daftar Warga</h3>
-
                         <div class="card-tools">
                             <form action="<?= base_url('Warga/index') ?>" method="POST">
                                 <div class="input-group input-group-sm" style="width: 150px;">
@@ -24,22 +27,19 @@
                             <thead>
                                 <tr>
                                     <th class="text-capitalize">No.</th>
-                                    <th class="text-capitalize">nik</th>
-                                    <th class="text-capitalize">nama</th>
-                                    <th class="text-capitalize">Alamat</th>
-                                    <th class="text-capitalize">Action</th>
+                                    <th class="text-capitalize">Layanan</th>
+                                    <th class="text-capitalize">action</th>
+
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                 $i = 0;
-                                foreach ($warga as $w) : $i++ ?>
+                                foreach ($layanan as $w) : $i++ ?>
 
                                     <tr>
                                         <td><?= $i ?></td>
-                                        <td><?= $w['nik'] ?></td>
-                                        <td><?= $w['nama'] ?></td>
-                                        <td><?= $w['alamat'] ?></td>
+                                        <td><?= $w['layanan'] ?></td>
                                         <td>
                                             <a href="#">
                                                 <i class="fas fa-edit fa-fw"></i>
@@ -70,3 +70,29 @@
         <!-- /.row -->
     </div>
 </section>
+<div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Tambah Layanan</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="<?= base_url('Layanan/tambahLayanan') ?>" method="POST">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="layanan" placeholder="Masukkan Layanan" name="layanan">
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Batalkan</button>
+                    <button type="submit" class="btn btn-primary">Tambah</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
