@@ -27,8 +27,8 @@
                     <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text text-uppercase">Karyawan</span>
-                        <span class="info-box-number">7</span>
+                        <span class="info-box-text text-uppercase">Warga</span>
+                        <span class="info-box-number"><?= $jumlahWarga ?></span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>

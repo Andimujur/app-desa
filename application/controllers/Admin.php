@@ -22,6 +22,7 @@ class Admin extends CI_Controller
     public function index()
 
     {
+        $data['jumlahWarga'] = count($this->Toko_Model->getAll('warga'));
         $data['title'] = 'Dashbord';
         $data['menu'] = 'Halaman Utama';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata['username']])->row_array();

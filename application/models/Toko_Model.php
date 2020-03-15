@@ -63,6 +63,11 @@ class Toko_Model extends CI_Model
         $this->db->where('id', $id);
         return $this->db->update($table);
     }
+
+    public function getByUsername($username)
+    {
+        return $this->db->get_where('user', ['username' => $username])->row_array();
+    }
 }
 
 /* End of file Toko_Model.php */
