@@ -16,7 +16,7 @@ class Admin extends CI_Controller
             redirect('auth');
         } else if ($this->session->userdata('role_id') != 1) {
             $this->session->set_flashdata('flash', 'Access Di BLOCK');
-            redirect('');
+            redirect('layanan/index');
         }
     }
     public function index()

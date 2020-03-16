@@ -11,6 +11,10 @@ class Layanan extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Toko_Model');
+        if (!$this->session->userdata('username')) {
+            $this->session->set_flashdata('flash', 'Access Di BLOCK');
+            redirect('auth');
+        }
     }
 
     public function index()
@@ -18,7 +22,7 @@ class Layanan extends CI_Controller
 
         $keyword = $this->input->post('keyword');
         if ($keyword != NULL) {
-            $data['layanan'] =   $this->Toko_Model->cariData($keyword);
+            $data['layanan'] =   $this->Toko_Model->cariLayanan($keyword);
             if ($data['layanan'] == NULl) {
                 $this->session->flashdata('flash', 'Data Tidak Di Temukan');
                 $data['layanan'] = $this->Toko_Model->getAll('layanan');
@@ -48,6 +52,18 @@ class Layanan extends CI_Controller
         } else {
             # code...
         }
+    }
+
+    public function deleteLayanan($id)
+    {
+        $this->Toko_Model->deleteById('layanan', $id);
+        $this->session->flashdata('flash', 'Berhasil Di hapus');
+        redirect('layanan/index');
+    }
+
+    public function recordLayanan()
+    {
+        $data['user'] = $this->Toko_Model->getByUsername($this->session->userdata('username'));
     }
 }
 

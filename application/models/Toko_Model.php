@@ -31,13 +31,6 @@ class Toko_Model extends CI_Model
         return  $this->db->get()->result_array();
     }
 
-    public function getAllByKatalog($katalog)
-    {
-        $this->db->select('*');
-        $this->db->from('barang');
-        $this->db->where('katalog', $katalog);
-        return $this->db->get()->result_array();
-    }
 
     public function deleteById($table, $id)
     {
@@ -84,6 +77,13 @@ class Toko_Model extends CI_Model
             'layanan' => $set
         ];
         return $this->db->insert('layanan', $data);
+    }
+
+    public function cariLayanan($keyword)
+    {
+        $this->db->like('layanan', $keyword);
+        $this->db->from('layanan');
+        return $this->db->get()->result_array();
     }
 }
 

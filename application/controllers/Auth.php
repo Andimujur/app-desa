@@ -39,7 +39,7 @@ class Auth extends CI_Controller
                         redirect('admin');
                     } else {
                         $this->session->set_flashdata('flash', 'Selamat datang di Toko ');
-                        redirect('barang/bangunan');
+                        redirect('layanan/index');
                     }
                 } else {
                     $this->session->set_flashdata('flash', 'Password Salah !');

@@ -8,9 +8,9 @@
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Daftar Warga</h3>
+                        <h3 class="card-title">Daftar Layanan</h3>
                         <div class="card-tools">
-                            <form action="<?= base_url('Warga/index') ?>" method="POST">
+                            <form action="<?= base_url('layanan/index') ?>" method="POST">
                                 <div class="input-group input-group-sm" style="width: 150px;">
                                     <input type="text" name="keyword" class="form-control float-right" placeholder="Search">
 
@@ -39,12 +39,12 @@
 
                                     <tr>
                                         <td><?= $i ?></td>
-                                        <td><?= $w['layanan'] ?></td>
+                                        <td class="text-capitalize"><?= $w['layanan'] ?></td>
                                         <td>
                                             <a href="#">
                                                 <i class="fas fa-edit fa-fw"></i>
                                             </a>
-                                            <a href="#">
+                                            <a href="<?= base_url('Layanan/deleteLayanan/') ?><?= $w['id'] ?>">
                                                 <i class="fas fa-trash fa-fw"></i>
                                             </a>
                                         </td>
@@ -82,7 +82,7 @@
             <form action="<?= base_url('Layanan/tambahLayanan') ?>" method="POST">
                 <div class="modal-body">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="layanan" placeholder="Masukkan Layanan" name="layanan">
+                        <input type="text" class="form-control" id="layanan" placeholder="Masukkan Layanan" name="layanan" autocomplete="off">
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between">
